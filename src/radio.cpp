@@ -128,7 +128,6 @@ void radio_set_sniff(int channel, uint32_t access_address)
                         RADIO_INTENSET_FRAMESTART_Msk |
                         // RADIO_INTENSET_CCAIDLE_Msk |
                         RADIO_INTENSET_CCABUSY_Msk;
-
   // Enable NVIC Interrupt for Radio
   NVIC_SetPriority(RADIO_IRQn, IRQ_PRIORITY_LOW);
   NVIC_ClearPendingIRQ(RADIO_IRQn);
@@ -212,6 +211,6 @@ void radio_tx_to_rx()
   while (NRF_RADIO->EVENTS_DISABLED == 0)
     ;
 
-  NRF_RADIO->EVENTS_READY = 0;
-  NRF_RADIO->TASKS_RXEN = 1;
+  // NRF_RADIO->EVENTS_READY = 0;
+  // NRF_RADIO->TASKS_RXEN = 1;
 }
